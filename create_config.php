@@ -3,7 +3,7 @@ header("Content-type:text/html;charset=utf-8");
 ?>
 <?php
 $config = file_get_contents('php://input');
-
+//助手上传接口，标准json格式
 // check for required fields
 if (strlen($config) > 50) {
   $result = file_put_contents("config.txt",$config);
