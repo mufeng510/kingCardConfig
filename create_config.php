@@ -17,7 +17,7 @@ if ($id == "1"){
   $config = json_encode($temp);
 } elseif ($id =="3") {
   //从其他接口获取，需为标准json，否则请自行适配格式。
-  $api = $_GET['api']
+  $api = $_GET['api'];
   $config = file_get_contents($api);
 }
 
