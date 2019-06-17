@@ -12,5 +12,4 @@ do{
   sleep($interval);// 等待
 
 }while(true);
-}
 ?>
