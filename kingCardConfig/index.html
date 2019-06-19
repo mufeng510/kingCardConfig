@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<div>上传</div>
+	<div>
+		<form action="">
+			guid:<input type="text" name="guid">
+			token:<input type="text" name="token">
+		</form>
+		<input type="button" value="get" onclick="fnJsonSubmit();">
+		<input type="button" value="post" onclick="fnJsonSubmitPost();">
+	</div>
+	<hr />
+	<div>获取</div>
+	<input type="button" value="json" id="1" onclick="fnGetSubmit(this);">
+	<input type="button" value="逗号隔开" id="2" onclick="fnGetSubmit(this)">
+	<hr />
+	<div>api信息</div>
+	<input type="button" value="查看我的api信息" id="1" onclick="fnJsonSubmit(this);">
+	<script type='text/javascript' src="kingCardConfig/js/jquery-3.1.1.min.js"></script>
+	<script>
+		function getApiText(){
+			var host = window.location.host;
+			alert('配置助手自定义：http://'+host+'/kingCardConfig\nTinyProxy自动模式tokenApi:：http://'+host+'/kingCardConfig/get_config.php?id=2');
+		}
+
+		function fnJsonSubmit(){
+			var guid1 = $("input[name='guid']").val();
+			var token1 = $("input[name='token']").val();
+
+			$.ajax({
+				method: 'GET',
+				url: 'kingCardConfig/creatte_config.php?id=2&Guid='+guid1+'&Token='+token1+'',
+				dataType: 'json',
+				success: (res)=>{
+					alert(res.success + ',' + res.message+"success为1表示成功0表示失败");
+				}
+			});
+		}
+
+		function fnJsonSubmitPost(){
+			var guid2 = $("input[name='guid']").val();
+			var token2 = $("input[name='token']").val();
+			var str = '{"Time":"2019-06-17 21:49:26","Guid":'+guid2+',"Token":"'+token2+'"}';
+			$.ajax({
+				method: 'POST',
+				url: 'kingCardConfig/create_config.php?id=1',
+				data: {
+					str
+				},
+				dataType: 'json',
+				success: (res)=>{
+					alert(res.success + ',' + res.message+"say");
+				}
+			});
+		}
+
+		function fnGetSubmit(s){
+			var ss = $(s).attr('id');
+			$.ajax({
+				method: 'GET',
+				url: 'kingCardConfig/get_config.php?id='+ss,
+				dataType: 'json',
+				success: (res)=>{
+					alert(res);
+				}
+			});
+		}
+	</script>
+</body>
+</html>

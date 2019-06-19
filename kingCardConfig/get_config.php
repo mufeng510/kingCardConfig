@@ -1,8 +1,11 @@
 <?php
 // get config from file
+error_reporting(E_ALL & ~E_NOTICE);
 $id = $_GET['id'];
 //支持两种上传方式
-if ($id == "1"){
+if(empty($id)){
+	echo file_get_contents("config.txt");
+}elseif ($id == "1"){
 	//标准json输出
 	echo file_get_contents("config.txt");
 
@@ -15,5 +18,7 @@ if ($id == "1"){
 	$Token=$config->{'Token'};
 
 	echo $Guid.",".$Token;
+}else{
+	echo "无效请求";
 }
 ?>
