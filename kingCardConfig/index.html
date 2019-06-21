@@ -27,7 +27,7 @@
 	<script>
 		function getApiText(){
 			var host = window.location.host;
-			alert('配置助手自定义：http://'+host+'/kingCardConfig\nTinyProxy自动模式tokenApi:：http://'+host+'/kingCardConfig/get_config.php?id=2');
+			alert('配置助手自定义：http://'+host+'/kingCardConfig\nTinyProxy自动模式tokenApi：http://'+host+'/kingCardConfig/get_config.php?id=2');
 		}
 
 		function fnJsonSubmit(){
@@ -36,7 +36,7 @@
 
 			$.ajax({
 				method: 'GET',
-				url: 'kingCardConfig/create_config.php?id=2&Guid='+guid1+'&Token='+token1+'',
+				url: 'create_config.php?id=2&Guid='+guid1+'&Token='+token1+'',
 				dataType: 'json',
 				success: (res)=>{
 					alert(res.success + ',' + res.message+"success为1表示成功0表示失败");
@@ -50,7 +50,7 @@
 			var str = '{"Time":"2019-06-17 21:49:26","Guid":'+guid2+',"Token":"'+token2+'"}';
 			$.ajax({
 				method: 'POST',
-				url: 'kingCardConfig/create_config.php?id=1',
+				url: 'create_config.php?id=1',
 				data: {
 					str
 				},
@@ -65,7 +65,7 @@
 			var ss = $(s).attr('id');
 			$.ajax({
 				method: 'GET',
-				url: 'kingCardConfig/get_config.php?id='+ss,
+				url: 'get_config.php?id='+ss,
 				dataType: 'json',
 				success: (res)=>{
 					alert(res);
