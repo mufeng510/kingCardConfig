@@ -22,8 +22,8 @@
 	<input type="button" value="逗号隔开格式" id="2" onclick="fnGetSubmit(this)">
 	<hr />
 	<div>api信息</div>
-	<input type="button" value="查看我的api信息" id="1" onclick="fnJsonSubmit(this);">
-	<script type='text/javascript' src="kingCardConfig/js/jquery-3.1.1.min.js"></script>
+	<input type="button" value="查看我的api信息" id="1" onclick="getApiText(this);">
+	<script type='text/javascript' src="js/jquery-3.1.1.min.js"></script>
 	<script>
 		function getApiText(){
 			var host = window.location.host;
@@ -36,7 +36,7 @@
 
 			$.ajax({
 				method: 'GET',
-				url: 'kingCardConfig/creatte_config.php?id=2&Guid='+guid1+'&Token='+token1+'',
+				url: 'kingCardConfig/create_config.php?id=2&Guid='+guid1+'&Token='+token1+'',
 				dataType: 'json',
 				success: (res)=>{
 					alert(res.success + ',' + res.message+"success为1表示成功0表示失败");
