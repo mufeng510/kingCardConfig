@@ -3,8 +3,11 @@ header("Content-type:text/html;charset=utf-8");
 ?>
 <?php
 //支持两种上传方式，均以标准json存储
+error_reporting(E_ALL & ~E_NOTICE);
 $id = $_GET['id'];
-if ($id == "1"){
+if(empty($id)){
+  $config = file_get_contents('php://input');
+} elseif ($id == "1"){
   //标准json格式，为post方式（配置助手脚本助手为该方式）
   $config = file_get_contents('php://input');
 } elseif ($id == "2") {
@@ -29,6 +32,7 @@ if ($id == "1"){
   $result = file_put_contents("api.txt",$api);
   if ($result>10){
     echo "success";
+    return;
   }else{
     echo "failed";
     return;

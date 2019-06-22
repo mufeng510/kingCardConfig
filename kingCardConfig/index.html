@@ -48,7 +48,7 @@
 			var host = window.location.host;
 			var ss = $(s).attr('id');
 			if (ss == "getAllApi") {
-				alert('配置助手自定义：http://'+host+'/kingCardConfig\nTinyProxy自动模式tokenApi：http://'+host+'/kingCardConfig/get_config.php?id=2');
+				alert('配置助手自定义：\nhttp://'+host+'/kingCardConfig\n\nTinyProxy自动模式tokenApi：\nhttp://'+host+'/kingCardConfig/get_config.php?id=2');
 			}else if(ss == "setApi"){
 				$.ajax({
 					method: 'GET',
@@ -113,7 +113,7 @@
 			$.ajax({
 				method: 'GET',
 				url: 'get_config.php?id='+ss,
-				dataType: 'json',
+				dataType: 'text',
 				success: (res)=>{
 					alert(res);
 				}

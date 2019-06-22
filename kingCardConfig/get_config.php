@@ -5,7 +5,7 @@ $id = $_GET['id'];
 //支持两种上传方式
 if(empty($id)){
 	echo file_get_contents("config.txt");
-}elseif ($id == "1"){
+} elseif ($id == "1"){
 	//标准json输出
 	echo file_get_contents("config.txt");
 
@@ -18,7 +18,7 @@ if(empty($id)){
 	$Token=$config->{'Token'};
 
 	echo $Guid.",".$Token;
-}else{
+} else{
 	echo "无效请求";
 }
 ?>
