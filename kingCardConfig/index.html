@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<title>测试页面</title>
 </head>
 <body>
 	<div>上传</div>
@@ -21,14 +21,56 @@
 	<input type="button" value="json格式" id="1" onclick="fnGetSubmit(this);">
 	<input type="button" value="逗号隔开格式" id="2" onclick="fnGetSubmit(this)">
 	<hr />
+	<div>定时自动获取</div>
+	<form action="">
+		api:<input type="text" name="api">
+	</form>
+	<input type="button" value="保存" id="setApi" onclick="getApiText(this);">
+	<p>1.crontab，具体方法自行百度（推荐）</p>
+	<p>2.将http://你的域名/kingCardConfig/create_config.php?id=3添加至监控，监控网站自行查找</p>
+	<p>3.PHP循环获取，不推荐，耗资源且无法暂停，只能重启关闭，点击下方按钮开启(注意开启无提示)</p>
+	<input type="button" value="点我开启PHP定时获取" id="openApi" onclick="getApiText(this);">
+	<hr />
 	<div>api信息</div>
-	<input type="button" value="查看我的api信息" id="1" onclick="getApiText(this);">
+	<input type="button" value="查看我的api信息" id="getAllApi" onclick="getApiText(this);">
+	<hr />
 	<script type='text/javascript' src="js/jquery-3.1.1.min.js"></script>
 	<script>
-		function getApiText(){
+		$.ajax({
+			method: 'GET',
+			url: 'create_config.php?id=4',
+			dataType: 'text',
+			success: (res)=>{
+				$("input[name='api']").val(res);
+			}
+		});
+		function getApiText(s){
 			var host = window.location.host;
-			alert('配置助手自定义：http://'+host+'/kingCardConfig\nTinyProxy自动模式tokenApi：http://'+host+'/kingCardConfig/get_config.php?id=2');
+			var ss = $(s).attr('id');
+			if (ss == "getAllApi") {
+				alert('配置助手自定义：http://'+host+'/kingCardConfig\nTinyProxy自动模式tokenApi：http://'+host+'/kingCardConfig/get_config.php?id=2');
+			}else if(ss == "setApi"){
+				$.ajax({
+					method: 'GET',
+					url: 'create_config.php?id=5&api='+$("input[name='api']").val(),
+					dataType: 'text',
+					success: (res)=>{
+						alert(res);
+						$.ajax({
+							method: 'GET',
+							url: 'create_config.php?id=4',
+							dataType: 'text',
+							success: (res)=>{
+								$("input[name='api']").val(res);
+							}
+						});
+					}
+				});
+			}else if (ss == "openApi") {
+				window.open('http://'+host+'/kingCardConfig/autoGet.php');
+			}
 		}
+
 
 		function fnJsonSubmit(){
 			var guid1 = $("input[name='guid']").val();
@@ -39,24 +81,29 @@
 				url: 'create_config.php?id=2&Guid='+guid1+'&Token='+token1+'',
 				dataType: 'json',
 				success: (res)=>{
-					alert(res.success + ',' + res.message+"success为1表示成功0表示失败");
+					alert(res.success + ',' + res.message+"\n1表示成功0表示失败");
 				}
 			});
 		}
 
 		function fnJsonSubmitPost(){
+			var d =  new Date();
+			var time2 = (d.getFullYear()) + "-" +
+			(d.getMonth() + 1) + "-" +
+			(d.getDate()) + " " +
+			(d.getHours()) + ":" +
+			(d.getMinutes()) + ":" +
+			(d.getSeconds());
 			var guid2 = $("input[name='guid']").val();
 			var token2 = $("input[name='token']").val();
-			var str = '{"Time":"2019-06-17 21:49:26","Guid":'+guid2+',"Token":"'+token2+'"}';
+			var str = {Time:time2,Guid:guid2,Token:token2};
 			$.ajax({
 				method: 'POST',
 				url: 'create_config.php?id=1',
-				data: {
-					str
-				},
+				data: JSON.stringify(str),
 				dataType: 'json',
 				success: (res)=>{
-					alert(res.success + ',' + res.message+"say");
+					alert(res.success + ',' + res.message+"\n1表示成功0表示失败");
 				}
 			});
 		}

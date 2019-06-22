@@ -17,8 +17,22 @@ if ($id == "1"){
   $config = json_encode($temp);
 } elseif ($id =="3") {
   //从其他接口获取，需为标准json，否则请自行适配格式。
-  $api = $_GET['api'];
+  $api = file_get_contents("api.txt");
   $config = file_get_contents($api);
+} elseif ($id =="4") {
+  //获取api接口信息
+  echo file_get_contents("api.txt");
+  return;
+} elseif ($id =="5") {
+  //写入api接口信息
+  $api = $_GET['api'];
+  $result = file_put_contents("api.txt",$api);
+  if ($result>10){
+    echo "success";
+  }else{
+    echo "failed";
+    return;
+  }
 }
 
 // check for required fields
