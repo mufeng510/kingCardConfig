@@ -6,6 +6,8 @@
 放入服务器后打开链接http://你的域名/kingCardConfig/index.html
 
 demo:http://helper.vtop.design/kingCardConfig/index.html
+
+温馨提示：设置及测试完成后建议删除index.html或修改其文件名，避免无聊人士。
 #### 配置获取方式
 支持两种方式(通过id值区分)：
 
