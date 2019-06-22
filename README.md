@@ -37,3 +37,5 @@
 2.通过网站监控，添加http://你的域名/kingCardConfig/create_config.php?id=3至监控
 
 3.打开链接 http://你的域名/kingCardConfig/autoGet.php(不推荐，需要重启才能关闭)
+
+demo:http://helper.vtop.design/kingCardConfig/index.html
