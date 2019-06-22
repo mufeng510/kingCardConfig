@@ -4,6 +4,8 @@
 将项目中的kingCardConfig文件夹复制到服务器目录下，并将两个txt文件权限修改0666以上，即至少读写权限给满。
 #### 设置及测试
 放入服务器后打开链接http://你的域名/kingCardConfig/index.html
+
+demo:http://helper.vtop.design/kingCardConfig/index.html
 #### 配置获取方式
 支持两种方式(通过id值区分)：
 
@@ -35,5 +37,3 @@
 2.通过网站监控，添加http://你的域名/kingCardConfig/create_config.php?id=3至监控
 
 3.打开链接 http://你的域名/kingCardConfig/autoGet.php(不推荐，需要重启才能关闭)
-
-demo:http://helper.vtop.design/kingCardConfig/index.html
