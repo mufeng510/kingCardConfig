@@ -1,4 +1,7 @@
 <?php
+header("Content-type:text/html;charset=utf-8");
+?>
+<?php
 // get config from file
 error_reporting(E_ALL & ~E_NOTICE);
 $id = $_GET['id'];
