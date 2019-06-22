@@ -7,8 +7,6 @@
 #### 配置获取方式
 支持两种方式(通过id值区分)：
 
-假设这些文件存放在 根目录/kingCardConfig/目录下，后同。
-
 1.标准json输出：http://域名/kingCardConfig/get_config.php?id=1
 
 将会得到如下格式：{"Time":"2019-06-16 11:52:50","Guid":"Guid值","Token":"Token值"}
