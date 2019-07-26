@@ -5,7 +5,7 @@ header("Content-type:text/html;charset=utf-8");
 // get config from file
 error_reporting(E_ALL & ~E_NOTICE);
 $id = $_GET['id'];
-//支持两种上传方式
+//支持两种获取方式
 if(empty($id)){
 	echo file_get_contents("config.txt");
 } elseif ($id == "1"){
